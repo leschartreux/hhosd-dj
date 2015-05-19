@@ -1,2 +1,2 @@
-# dj-hhosd
-Happy Handsfree OS Deploy - Django Interface
+hhosd-dj
+## Happy Handsfree OS Deploy - Django Interface
