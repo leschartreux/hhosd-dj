@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'$^', views.home,name = "home"),
     url(r'^edition',views.edition,name ="edition"),
     url(r'^examination/group',views.exagroup,name = "group"),
-    url(r'^accounts/login/$',auth_views.login),
+    url(r'^accounts/login/$', auth_views.login),
     
 ] 
 
