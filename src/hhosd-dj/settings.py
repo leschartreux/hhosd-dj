@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from _collections_abc import Sequence
-from django.conf.global_settings import STATICFILES_DIRS, STATIC_ROOT, MEDIA_URL
+from django.conf.global_settings import STATICFILES_DIRS, STATIC_ROOT, MEDIA_URL , MEDIA_ROOT
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

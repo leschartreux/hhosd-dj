@@ -1,7 +1,15 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required
 def home(request):
 
     return render(request,'website/acceuil.html',{})
+
+def edition(request):
+    return render(request,'website/edition.html',{})
+
+def exagroup(request):
+    return render(request,'website/EXgroup.html',{})

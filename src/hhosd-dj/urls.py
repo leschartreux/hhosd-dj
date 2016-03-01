@@ -17,12 +17,17 @@ from website import views
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     
-    url(r'$^', views.home,name = "home")
+    url(r'$^', views.home,name = "home"),
+    url(r'^edition',views.edition,name ="edition"),
+    url(r'^examination/group',views.exagroup,name = "group"),
+    url(r'^accounts/login/$',auth_views.login),
+    
 ] 
 
 # Static files are accessed only during the development phase // Les fichiers staitc ne sont accessibles que durant la phase de developpement
