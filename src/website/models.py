@@ -1,19 +1,29 @@
+# This is an auto-generated Django model module.
+# You'll have to do the following manually to clean this up:
+#   * Rearrange models' order
+#   * Make sure each model has one field with primary_key=True
+#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
+# Feel free to rename the models, but don't rename db_table values or field names.
+#
+# Also note: You'll have to insert the output of 'django-admin sqlcustom [app_label]'
+# into your database.
+from __future__ import unicode_literals
+
 from django.db import models
 
-# Create your models here.
-class User(models.Model):
-    idusr = models.CharField(max_length=120,blank=True,null=True)
-    pwdusr = models.CharField(max_length = 20,blank=True,null=True)
-    
-    def __str__(self):
-        return self.id,self.pwd
-    
-class Computer(models.Model):
-    idComp = models.IntegerField(blank=True,null=True,unique=True)
-    nameComp = models.CharField(max_length=150,blank=True,null=True)
-    ipAdress = models.CharField(max_length=16,blank=True,null=True)
-    netmask = models.CharField(max_length=16,blank=True,null=True)
-    compState = models.CharField(max_length=20,blank=True,null=True)
-    
-    def __str__(self):
-        return self.idComp,self.nameComp,self.ipAdress,self.netmask,self.compState
+class Machine(models.Model):
+    mac = models.CharField(db_column='MAC', max_length=17, blank=True, null=True)  # Field name made lowercase.
+    ip = models.CharField(db_column='IP', max_length=15, blank=True, null=True)  # Field name made lowercase.
+    nom = models.CharField(db_column='NOM', max_length=32)  # Field name made lowercase.
+    salle = models.IntegerField(db_column='SALLE')  # Field name made lowercase.
+    num = models.AutoField(primary_key=True)
+    type_connect = models.IntegerField(blank=True, null=True)
+    type_os = models.IntegerField(blank=True, null=True)
+    vm_audio = models.IntegerField(db_column='vm_audio', blank=True, null=True)
+    type_poste = models.CharField(db_column='TYPE_POSTE', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    login = models.CharField(max_length=64, blank=True, null=True)
+    pyddlaj = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'MACHINE'

@@ -5,13 +5,25 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.redirects.models import Redirect
 from django.http.request import HttpRequest
 from django.http import *
+from website.models import Machine
+from collections import namedtuple
+from django.db import connections
 
 # Create your views here.
 # @login_required(login_url='/login/') -> add this field above every views which requires to be logged in, in order to be accessed
+def fetchallmachine(cursor):
+    desc=cursor.description
+    nt_result = [col[0] for col in desc]
+    return [dict(zip(nt_result,row)) for row in cursor.fetchall()]
 
 @login_required(login_url='/login/')
-def home(request):    
-    return render(request,'website/acceuil.html')
+def home(request):
+    
+    cursor = connections['postes'].cursor()
+    cursor.execute("SELECT * FROM MACHINE WHERE pyddlaj=1");
+    result = fetchallmachine(cursor)
+        
+    return render(request,'website/acceuil.html',result)
 
 @login_required(login_url='/login/')
 def edition(request):
