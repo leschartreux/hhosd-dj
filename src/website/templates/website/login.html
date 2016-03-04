@@ -1,0 +1,46 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+{% include "header.html" %}
+	<title>HHOSD | {% block title %}Log in{% endblock %}</title> <!-- the <head> tags end here din order to properly display the wanted title -->
+</head>
+<body>
+{% block authContent %} 
+	<div class="container jumbotron">
+		<h3 class="col-md-offset-1">Happy Handsfre OS Deploy <small>Please login to access the site. || Veuillez vous connecter pour accéder au site.</small></h3>
+		
+		<!-- login form -->
+		<form class="form-horizontal" method='POST' action='/login/'>
+		{% csrf_token %}
+		{% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+        {% endif %}
+		<!-- Username controls -->
+			<div class="form-group">
+			<label for="inputUser" class="col-md-offset-2  col-md-2 control-label">Username</label>
+			<div class="col-md-3">
+				<input class="form-control" name="username" type="text" placeholder="Username" id="inputUser">
+			</div>
+		</div>
+
+		<!-- Password controls -->
+		<div class="form-group">
+			<label for="inputPasswd" class="col-md-offset-2 col-md-2 control-label">Password</label>
+			<div class="col-md-3">
+				<input class="form-control" name ="password" type="password" placeholder="Password" id="inputPasswd">
+			</div>
+		</div>
+
+		<!-- Sign in button -->
+		<div class="form-group">
+			<div class="col-md-offset-4 col-md-2">
+				<button type="submit" class="btn btn-default" value="Sign in">Sign in</button>
+			</div>
+		</div>
+
+		</form>
+	</div>
+{% endblock %}
+</body>
+
+{% include "jscore.html" %}
