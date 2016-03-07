@@ -17,13 +17,16 @@ from website import views
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
-from django.contrib.auth import views as auth_views
 from django.contrib import admin
+from website.views import CompList
+from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     
-    url(r'$^', views.home,name = "home"),
+    #url(r'$^', CompList.as_view(),name = "home"),
+    url(r'$^', login_required(CompList.as_view()),name = "home"),
     url(r'^edition/?$',views.edition,name ="edition"),
     url(r'^examination/group/?$',views.exagroup,name = "group"),
     url(r'^login/?$', views.login_user),

@@ -10,6 +10,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.db.backends.mysql.validation import DatabaseValidation
 
 class Machine(models.Model):
     mac = models.CharField(db_column='MAC', max_length=17, blank=True, null=True)  # Field name made lowercase.
@@ -24,6 +25,9 @@ class Machine(models.Model):
     login = models.CharField(max_length=64, blank=True, null=True)
     pyddlaj = models.IntegerField(blank=True, null=True)
 
+    def __str__(self):
+        return self.nom
+    
     class Meta:
         managed = False
         db_table = 'MACHINE'

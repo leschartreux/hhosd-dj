@@ -8,22 +8,32 @@ from django.http import *
 from website.models import Machine
 from collections import namedtuple
 from django.db import connections
+from django.views.generic import ListView
 
 # Create your views here.
 # @login_required(login_url='/login/') -> add this field above every views which requires to be logged in, in order to be accessed
+"""
 def fetchallmachine(cursor):
     desc=cursor.description
     nt_result = [col[0] for col in desc]
     return [dict(zip(nt_result,row)) for row in cursor.fetchall()]
+"""
 
+class CompList(ListView):
+    model = Machine
+    template_name = 'website/acceuil.html'
+    context_object_name = 'computerList'
+    queryset = Machine.objects.using('postes').filter(pyddlaj=1).order_by('nom').all()
+    
 @login_required(login_url='/login/')
 def home(request):
-    
+    """
     cursor = connections['postes'].cursor()
-    cursor.execute("SELECT * FROM MACHINE WHERE pyddlaj=1");
+    cursor.execute("SELECT * FROM MACHINE WHERE pyddlaj=1 ORDER BY NAME");
     result = fetchallmachine(cursor)
-        
-    return render(request,'website/acceuil.html',result)
+    """
+    """compList=Machine.objects.using('postes').order_by('nom').all()"""
+    return render(request,'website/acceuil.html')
 
 @login_required(login_url='/login/')
 def edition(request):
