@@ -12,16 +12,18 @@
               <th>NOM</th>
               <th>IP</th>
               <th>MAC</th>
+              <th>BRAND</th>
               <th>MODEL</th>
             </tr>
           </thead>
           <tbody>
           {% for comp in computerList %}
               <tr>
-                <td>{{ comp.nom }}</td>
-                <td>{{ comp.ip }}</td>
-                <td>{{ comp.mac }}</td>
-                <td>prochainement : modèle de l'ordinateur</td>
+                <td>{{ comp.0 }}</td>
+                <td>{{ comp.1 }}</td>
+                <td>{{ comp.2 }}</td>
+                <td>{{ comp.3 }}</td>
+                <td>{{ comp.4 }}</td>
               </tr>
           {% endfor %}
           </tbody>
@@ -29,57 +31,4 @@
       </div>
    	</p>
 </div>
-{% endblock %}<!--
-
-<p>
-    
-  </p>
-
-<table class="table table-condensed" >
-          <thead>
-          <tr class="info">
-            <th>Nom</th>
-            <th>Nom Ordinateur</th>
-            <th>Adresse IP</th>
-            <th>Statut</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-           <td>1</td>
-            <td>cr-btsdev</td>
-            <td>198.124.65.2</td>
-            <td>installe</td>
-          </tr>
-          <tr class="active">
-            <td>2</td>
-            <td>cr-deploy</td>
-            <td>167.124.65.2</td>
-            <td>installe</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>cr-res</td>
-            <td>130.120.4.10</td>
-            <td>installe</td>
-            </tr>
-          <tr class="active">
-            <td>4</td>
-            <td>cr-compta</td>
-            <td>127.8.120.1</td>
-            <td>installe</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>cr-admin</td>
-            <td>127.8.120.2</td>
-            <td>installe</td>
-          </tr>
-          <tr class="active">
-           <td>6</td>
-           <td>test</td>
-           <td>qae</td>
-           <td>installe</td>
-          </tr>
-          </tbody>
-        </table>-->
+{% endblock %}

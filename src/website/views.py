@@ -27,13 +27,13 @@ class CompList(ListView):
     
 @login_required(login_url='/login/')
 def home(request):
-    """
-    cursor = connections['postes'].cursor()
-    cursor.execute("SELECT * FROM MACHINE WHERE pyddlaj=1 ORDER BY NAME");
-    result = fetchallmachine(cursor)
-    """
+    
+    cursor = connections['hhosd_ng'].cursor()
+    cursor.execute("SELECT cmp.name,cmp.ip,cmp.mac,model_vendor,model_name FROM computer cmp, computermodel cmpm WHERE is_hhosd=1 AND cmp.model_id = cmpm.model_id ORDER BY cmp.name");
+    computerList = cursor.fetchall()
+    
     """compList=Machine.objects.using('postes').order_by('nom').all()"""
-    return render(request,'website/acceuil.html')
+    return render_to_response('website/acceuil.html',{'computerList':computerList},context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def edition(request):

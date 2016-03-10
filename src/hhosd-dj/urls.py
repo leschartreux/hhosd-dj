@@ -25,8 +25,8 @@ from django.contrib.auth.decorators import login_required
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     
-    #url(r'$^', CompList.as_view(),name = "home"),
-    url(r'$^', login_required(CompList.as_view()),name = "home"),
+    url(r'$^', views.home,name = "home"),
+    #url(r'$^', login_required(CompList.as_view()),name = "home"),
     url(r'^edition/?$',views.edition,name ="edition"),
     url(r'^examination/group/?$',views.exagroup,name = "group"),
     url(r'^login/?$', views.login_user),

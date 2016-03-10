@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'website',
     #third party apps
     'crispy_forms',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -90,9 +91,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
     # mysql database containing our network's information
-    'postes': {
+    'hhosd_ng': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'postes',
+        'NAME': 'hhosd_ng',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
