@@ -5,7 +5,7 @@ The `urlpatterns` list routes URLs to views. For more information please see:
 Examples:
 Function views
     1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home') 
 Class-based views
     1. Add an import:  from other_app.views import Home
     2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
@@ -18,18 +18,21 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
-from website.views import CompList
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    
     url(r'$^', views.home,name = "home"),
-    #url(r'$^', login_required(CompList.as_view()),name = "home"),
     url(r'^edition/?$',views.edition,name ="edition"),
-    url(r'^examination/group/?$',views.exagroup,name = "group"),
-    url(r'^login/?$', views.login_user),
+    url(r'^exaGroup/?$',views.exagroup,name = "group"),
+    url(r'^exaComputer/?$',views.exagroup,name="test"),
+    
+    url(r'^taskGroup1/$',views.taskGroup1,name ="taskGroup1"),
+    url(r'^taskGroup2/?$',views.taskGroup2,name ="taskGroup2"),
+    
+    url(r'^login/?$', views.login_user)
+
     
 ] 
 

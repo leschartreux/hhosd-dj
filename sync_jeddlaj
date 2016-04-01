@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+mysqldump -h 10.11.1.39 -u

@@ -2,6 +2,7 @@
 <html lang="en">
   {% include "header.html" %}
         <title>HHOSD | {% block title %}Login{% endblock %}</title>
+        {% block script %}{% endblock %}
   </head>
   <body>
   <!-- Static navbar -->
@@ -21,8 +22,8 @@
             <li class="dropdown {% block activeEX %}{% endblock %}" >
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Examination</a>
                 <ul class="dropdown-menu">
-                    <li {% block activeEXGRP %}{% endblock %}><a href="examination/group">Group</a></li>
-                    <li {% block activeEXCMP %}{% endblock %}><a href="examination/computer">Computer</a></li>
+                    <li {% block activeEXGRP %}{% endblock %}><a href="exaGroup">Group</a></li>
+                    <li {% block activeEXCMP %}{% endblock %}><a href="exaComputer">Computer</a></li>
                 </ul>
             </li>
             
@@ -42,11 +43,11 @@
             </li>
 
             <!-- task -->
-            <li class="dropdown">
+            <li class="dropdown {% block activeTask %}{% endblock %}">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Task</a>
                 <ul class="dropdown-menu">
-                    <li><a href="edition/computer">Computer</a></li>
-                    <li><a href="edition/group">Group</a></li>
+                    <li><a href="taskComp">Computer</a></li>
+                    <li><a href="taskGroup1">Group</a></li>
                     <li class="dropdown-submenu">
                         <a tabindex="-1" href="#">Master</a>
                         <ul class="dropdown-menu">

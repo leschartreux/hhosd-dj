@@ -2,9 +2,7 @@
 {% block title %}Home{% endblock %}
 {% block activeHome %}class="active"{% endblock %}
 {% block content1 %}
-<div class="container">
-
-    <p>
+<p>
     <div id='table'>
       <table class="table table-condensed" >
           <thead>
@@ -29,6 +27,22 @@
           </tbody>
         </table>
       </div>
-   	</p>
+</p>
+{% endblock %}
+{% block content2 %}
+<div class='jumbotron'>
+<p>
+{% for tst in test %}
+{{tst}}
+{% endfor%}
+</p>
+</div>
+</br>
+<div class='jumbotron'>
+<p>
+{% for tst2 in test2 %}
+{{tst2}}
+{% endfor%}
+</p>
 </div>
 {% endblock %}

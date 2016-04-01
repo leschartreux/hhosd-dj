@@ -10,13 +10,13 @@
 		<h3 class="col-md-offset-1">Happy Handsfre OS Deploy <small>Please login to access the site. || Veuillez vous connecter pour accéder au site.</small></h3>
 		
 		<!-- login form -->
-		<form class="form-horizontal" method='POST' action='/login/'>
-		{% csrf_token %}
+		<form class="form-horizontal" method='POST' action='/login/'>{% csrf_token %}
+		{{ form|crispy }}
 		{% if next %}
             <input type="hidden" name="next" value="{{ next }}" />
         {% endif %}
 		<!-- Username controls -->
-			<div class="form-group">
+		<div class="form-group">
 			<label for="inputUser" class="col-md-offset-2  col-md-2 control-label">Username</label>
 			<div class="col-md-3">
 				<input class="form-control" name="username" type="text" placeholder="Username" id="inputUser">

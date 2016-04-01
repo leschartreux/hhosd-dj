@@ -1,0 +1,109 @@
+{% extends "website/base.html" %}
+{% block title %}Task Group{% endblock %}
+{% block activeTask %}class="active"{% endblock %}
+{% block script %}
+<Script type='text/javascript'>
+	//Mise ï¿½ jour dynamique du tableau par rapport ï¿½ l'idb sï¿½lï¿½ectionnï¿½
+	function refresh(selobject, arrvalue)
+	{
+		var item = selobject.options[selobject.selectedIndex];
+		var val = item.value;
+		
+		var objidb = arrvalue[val];
+		
+		var element = document.getElementById("masterName");
+		element.textContent = objidb[1];
+		element = document.getElementById("masterNameOS");
+		element.textContent = objidb[13];
+		
+		//parcours des partitions pour mis ï¿½ jours des valeurs du tableau
+		for ( var i=0; i< 5; i++)
+		{
+			var id_idb=""
+			var nom_idb=""
+			var taille=""
+			if ( typeof objidb[i] != 'undefined' ) //extraction des nouvelles valeurs
+			{
+				id_idb = objidb[i]["id_idb"];
+				nom_idb = objidb[i]["nom_idb"];
+				taille = objidb[i]["taille"];
+			}
+			//mise ï¿½ jour des ï¿½lï¿½ments du tableau
+			var element = document.getElementsByName("id_idb" + i)[0];
+			element.textContent = id_idb;
+			element = document.getElementsByName("nom_idb" + i)[0];
+			element.textContent = nom_idb;
+			element = document.getElementsByName("taille" + i)[0];
+			element.textContent = taille;
+			
+		}
+		
+		return;
+		
+	}
+	function rfhh(selobject, arrvalue) {
+		var item = selobject.options[selobject.selectedIndex];
+		var val = item.value;
+		
+		var objidb = arrvalue[val];
+		
+		var element
+	}
+	
+</Script>
+{% endblock %}
+{% block content1 %}
+<center>
+<form method='GET' action='/taskGroup'>
+<div>
+	<label class="col-md-offset-2 control-label">Configuration :</label>
+	<select name="groups" id="groups" onchange="refresh(this,{{ masterJSON }})">
+			<option value="0"></option>
+			{% for master in masterList %}
+				<option value="{{ master.0 }}">{{ master.1 }}</option>
+			{% endfor %}
+		</select>
+	<br>
+	<label class="control-label">Name : </label><label id="masterName"></label>
+	<br>
+	<label>OS Name : </label><label id="masterNameOS"></label>
+	<label id="partAss"></label>
+	<br>
+	<p> </p>
+</div>
+<br>
+</form>
+</center>
+<center>
+<form method='POST' name="form">
+<div id='table'>
+	<table class="table table-condensed">
+    	<thead>
+        	<tr class ='info'>
+            	<th></th>
+              	<th>Selection</th>
+              	<th>Name</th>
+              	<th>Disk Space</th>
+              	<th>Status</th>
+            </tr>
+         </thead>
+         <tbody>
+         {% for comp in compList %}
+         	<tr>
+            	<td></td>
+                <td><input type="checkbox" value="{{ comp.0 }}" name="check[{{ forloop.counter }}]"></td>
+                <td>{{ comp.0 }}</td>
+                <td>sd</td>
+                <td>fg</td>
+            </tr>
+         {% endfor %}
+         </tbody>
+	</table>
+</div>
+
+</form>
+</center>
+{% endblock %}
+{% block content2 %}
+{{ masterJSON }}
+{% endblock %}
